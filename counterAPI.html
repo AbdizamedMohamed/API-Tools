@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter API Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        caption {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            header {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Counter API</h1>
+</header>
+
+<main>
+    <h2>About This API</h2>
+    <p>The Counter API allows you to manage and manipulate numeric values stored in namespaces. You can create namespaces, add or remove values, and perform arithmetic operations to adjust those values dynamically.</p>
+    
+    <h2>Available API Endpoints</h2>
+    <table>
+        <caption>API Endpoints List</caption>
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="/api/ns?name=your_namespace_name" target="_blank">/api/ns?name=your_namespace_name</a></td>
+                <td>POST</td>
+                <td>Creates a new namespace with a specified name and auto-generated API key.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/add?np=your_namespace&value=your_value&api=API_KEY" target="_blank">/api/add?np=your_namespace&value=your_value&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Adds a value to a namespace.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/set?np=your_namespace&valueName=your_value_name&newValue=your_value&api=API_KEY" target="_blank">/api/set?np=your_namespace&valueName=your_value_name&newValue=your_value&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Sets or increments a value in a namespace using the value name directly.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/get?np=your_namespace&value=your_value&api=API_KEY" target="_blank">/api/get?np=your_namespace&value=your_value&api=API_KEY</a></td>
+                <td>GET</td>
+                <td>Retrieves a value from a namespace.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/reset?np=your_namespace&api=API_KEY" target="_blank">/api/reset?np=your_namespace&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Resets all values in a namespace.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/delete?np=your_namespace&value=your_value&api=API_KEY" target="_blank">/api/delete?np=your_namespace&value=your_value&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Deletes a value from a namespace.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/deletenp?np=your_namespace&api=API_KEY" target="_blank">/api/deletenp?np=your_namespace&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Deletes all values and the namespace itself.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/plus?np=your_namespace&valueName=your_value_name&amount=your_amount&api=API_KEY" target="_blank">/api/plus?np=your_namespace&valueName=your_value_name&amount=your_amount&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Increases a numeric value in a namespace by a specified amount.</td>
+            </tr>
+            <tr>
+                <td><a href="/api/minus?np=your_namespace&valueName=your_value_name&amount=your_amount&api=API_KEY" target="_blank">/api/minus?np=your_namespace&valueName=your_value_name&amount=your_amount&api=API_KEY</a></td>
+                <td>POST</td>
+                <td>Decreases a numeric value in a namespace by a specified amount.</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>
