@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tools Hub</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 1.5em;
+            text-align: center;
+            color: #fff;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 2em auto;
+            padding: 0 1.5em;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        .intro p {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        .apis {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .api-card {
+            background-color: #1e1e1e;
+            padding: 1.5em;
+            margin: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 30%;
+            min-width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .api-card:hover {
+            transform: translateY(-5px);
+        }
+        .api-name {
+            font-size: 1.5em;
+            color: #007BFF;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .api-name:hover {
+            color: #5ab7ff;
+        }
+        .api-name svg {
+            margin-left: 4px;
+            width: 13.5px;
+            height: 13.5px;
+            fill: currentColor;
+        }
+        .api-card p {
+            font-size: 1em;
+            color: #aaa;
+        }
+        footer {
+            background-color: #1f1f1f;
+            color: #ccc;
+            padding: 1em 0;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .api-card {
+                width: 100%;
+                margin: 1em 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to API Tools</h1>
+</header>
+
+<div class="content">
+    <div class="intro">
+        <p>Explore our available APIs for free and unlimited use:</p>
+    </div>
+    <div class="apis">
+        <div class="api-card">
+            <p>
+                <a href="/api/ai/chatgpt?text=hi" class="api-name">
+                    ChatGPT API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Powerful natural language processing with ChatGPT.</p>
+        </div>
+        <div class="api-card">
+            <p>
+                <a href="/api/ai/gemini?text=hi" class="api-name">
+                    Gemini API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Next-generation conversational AI with Gemini.</p>
+        </div>
+        <div class="api-card">
+            <p>
+                <a href="/api/ai/gemini-pro?text=hi" class="api-name">
+                    Gemini Pro API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Advanced AI interactions with Gemini Pro.</p>
+        </div>
+        <div class="api-card">
+            <p>
+                <a href="/api/ai/zexxa?text=hi" class="api-name">
+                    Zexxa API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Unique AI capabilities for specialized tasks with Zexxa.</p>
+        </div>
+        <div class="api-card">
+            <p>
+                <a href="/api/downloader/tiktok?url=YOUR_LINK" class="api-name">
+                    TikTok API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Download TikTok videos and extract video links, hashtags, and thumbnails.</p>
+        </div>
+        <div class="api-card">
+            <p>
+                <a href="/api/others/weather?city=CITY_NAME" class="api-name">
+                    Weather API
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                    </svg>
+                </a>
+            </p>
+            <p>Get real-time weather, including temperature and forecasts, for any city.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 API Tools Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
