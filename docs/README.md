@@ -1,7 +1,4 @@
-<h1 align="center">
-  <img src="https://github.com/AbdizamedMohamed/API-Tools/blob/main/public/assets/favicon.png" width="50" height="50" alt="API Tools Icon">
-  API Tools
-</h1>
+<img width=100% title="API Tools" alt="API Tools" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=API Tools&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=45"/>
 
 
 Welcome to **API Tools**, a powerful and free collection of APIs for developers to build and integrate into their applications. We offer a range of endpoints with no user data tracking, no cookies, and unlimited usage. This repository contains the frontend and documentation for **API Tools**, as well as guidelines for using our Cloudflare Workers-based APIs.
