@@ -81,7 +81,7 @@ Each API returns appropriate HTTP status codes and error messages for troublesho
 500 Internal Server Error: Something went wrong on our end
 
 
-Contributing
+## Contributing
 
 We welcome contributions! If you'd like to contribute, please follow these steps:
 
@@ -103,7 +103,7 @@ We welcome contributions! If you'd like to contribute, please follow these steps
 
 Before contributing, please make sure to read our Code of Conduct.
 
-License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
