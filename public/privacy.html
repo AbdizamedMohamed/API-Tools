@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png"> <!-- Open Graph Image -->
+    <meta name="description" content="Privacy Policy for API Tools - Committed to protecting your privacy with zero data collection.">
+    <meta property="og:url" content="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <title>API Tools | Privacy Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --header-gradient-start: #4A90E2; /* Bright Blue */
+    --header-gradient-end: #9013FE; /* Vivid Purple */
+    --dark-bg: #242526; /* Dark Gray for the header */
+    --light-bg: #f4f4f4; /* Light background for contrast */
+    --text-color: #fff; /* White text color */
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #18191c; /* Darker background for better contrast */
+    color: #e4e4e4; /* Light gray text for contrast */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}
+.container {
+    flex-grow: 1;
+    position: relative; /* Add this to fix the absolute positioning issue */
+    width: 100%; /* Full width */
+    max-width: none; /* Remove any width restriction */
+    margin: 0; /* Remove margins to ensure full width */
+    padding: 30px; /* Keep padding inside the container */
+    background-color: #2f2f2f; /* Slightly lighter dark gray */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+    transition: background-color 0.3s; /* Smooth transition for theme changes */
+    opacity: 0; /* Initially hidden for fade-in effect */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+    border-bottom: 1px solid #3b3b3b; /* Thin dark gray line at the bottom */
+}
+.container .header h1 {
+    font-size: 2.5em; /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    color: #00A67E; /* Text color */
+    margin-bottom: 5px; /* Space below the heading */
+    text-transform: uppercase; /* Uppercase letters */
+    letter-spacing: 1px; /* Space between letters */
+    animation: fadeIn 1s; /* Fade-in animation */
+}
+
+h1, h2, h3 {
+    color: #00A67E; /* Accent color */
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 4.5rem;
+    border-bottom: 2px solid #00A67E; /* Accent border */
+    padding-bottom: 10px;
+}
+
+h2, h3 {
+    font-size: 3.5rem;
+}
+
+p {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #d1d1d1; /* Lighter gray for better readability */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.support__link {
+    color: #00BFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline; /* Ensure only the link text is clickable */
+}
+
+.support__link:hover {
+    color: #1e90ff; /* Change to your desired hover color */
+}
+.support__link svg {
+    width: 20px; /* Set a preferred width */
+    height: 20px; /* Set a preferred height */
+    vertical-align: middle; /* Align the icon with the text */
+    margin-top: -8px;
+}
+/* Footer Styles */
+footer {
+    padding: 20px 0; /* Optional padding for footer */
+    background-color: #18191c; /* Match your footer background */
+    margin: 0; /* Ensures no gap between footer and container */
+    border-radius: 0 0 12px 12px; /* Rounded corners at the bottom */
+}
+
+.footer__content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: space-between; /* Space out items evenly */
+    align-items: flex-start; /* Align items to the start */
+    width: 100%; /* Full width for content */
+}
+
+.footer__links {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: space-between; /* Space out links evenly */
+    width: 100%; /* Full width for links */
+}
+
+.footer__col {
+    flex: 1; /* Flexibly grow to fill space */
+    min-width: 150px; /* Minimum width for columns */
+    margin: 10px; /* Margin for spacing */
+}
+
+.footer__title {
+    font-size: 2.5rem; /* Title size */
+    margin-bottom: 10px; /* Spacing below the title */
+    font-weight: bold; /* Bold title */
+    background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end)); /* Gradient title */
+    -webkit-background-clip: text; /* Clip the background for text */
+    -webkit-text-fill-color: transparent; /* Fill color for text */
+    background-clip: text; /* Background clip */
+    text-fill-color: transparent; /* Text fill */
+}
+
+.footer__items {
+    list-style: none; /* Remove list styles */
+    padding: 0; /* No padding */
+}
+
+.footer__item {
+    margin-bottom: 10px; /* Space between items */
+}
+
+.footer__link {
+    color: #ffffff; /* White link color */
+    font-size: 1.5rem; /* Consistent font size for links */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+    display: inline-block; /* Make the link display inline-block */
+    padding: 5px 0; /* Padding for clickable area */
+}
+
+.footer__link:hover {
+    color: #1e90ff; /* Change to desired hover color */
+}
+
+.footer__bottom {
+    text-align: center; /* Centered text for the bottom */
+    margin-top: 20px; /* Margin above bottom text */
+}
+
+.footer__text {
+    font-size: 2rem; /* Smaller text size for footer */
+    margin: 0; /* No margin */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px); /* Slide down from above */
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        transform: translateY(0); /* End in position */
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(20px); /* Slide in from below */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* End in position */
+    }
+}
+.navbar-brand {
+    font-size: 40px; /* Adjust font size */
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end)); /* Gradient background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding: 28px 28px; /* Add horizontal padding for length */
+    min-width: 285px; /* Set a minimum width for the brand */
+    display: inline-block; /* Ensure it takes the padding into account */
+    width: 150px;
+    height: 70px;
+    display: flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Center align items vertically */
+}
+
+.navbar-inverse {
+    background-color: var(--dark-bg); /* Dark background for the navbar */
+    border-radius: 0 0 15px 15px; /* Rounded corners at the bottom of the navbar */
+    position: fixed; /* Fix the header to the top */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+space {
+    padding-top: 60px; /* Adjust this value based on your navbar height */
+}
+
+.no-limit-and-support {
+    text-decoration: none;
+    color: #00A67E; /* Green inspired by ChatGPT */
+    font-weight: bold;
+    font-size: 3.5rem;
+    position: relative; /* For pseudo-element animations */
+    z-index: 1; /* Above the overlay */
+    transition: color 0.3s; /* Smooth color transition */
+}
+.visitor-info {
+    margin-left: 20px; /* Pushes visitor info to the right */
+    font-size: 18px; /* Adjust font size for visitor info */
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: center; /* Center icon and text */
+    padding-right: 10px; /* Add some padding on the right */
+}
+
+.visitor-count {
+    color: #4CAF50; /* Color for the visitor count */
+    font-weight: bold; /* Make the number bold */
+    margin-left: 2px; /* Add some space between the text and the number */
+}
+
+/* New rule for span text color */
+.visitor-info span {
+    color: black; /* Set the color of text in spans to black */
+    font-size: 18px; /* Adjust font size for visitor info */
+}
+.visitor-info i {
+    color: green; /* Set the color of text in spans to black */
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container .header h1 {
+       font-size: 1.2em; /* Adjust font size */
+    }
+    p {
+       font-size: 1.3rem;
+    }
+
+    /* Style the Playground brand in the navbar */
+    .navbar-brand {
+       font-size: 27px; /* Adjust font size */
+       padding: 15px 15px; /* Add horizontal padding for length */
+       width: 50px;
+       height: 50px;
+    }
+
+    .navbar-inverse {
+       border-radius: 5px 5px 15px 15px; /* Rounded corners at the bottom of the navbar */
+    }
+    space {
+       padding-top: 40px; /* Adjust this value based on your navbar height */
+    }
+    .footer {
+        text-align: left; /* Align footer text to the left */
+    }
+   .footer__text {
+       font-size: 1.4rem; /* Smaller text size for footer */
+       text-align: center; /* Centered text */
+   }
+   .footer__title {
+        font-size: 1.9rem; /* Smaller title size */
+        background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        text-align: left;
+    }
+
+    .footer__link {
+        font-size: 1.3rem; /* Consistent font size for links */
+        margin-bottom: 8px; /* Space between links */
+        display: inline; /* Ensure only the link text is clickable */
+        text-align: left;
+    }
+
+    .footer__link:hover {
+        color: #1e90ff; /* Keep hover effect consistent */
+    }
+
+    .footer__content {
+        align-items: flex-start; /* Align items left */
+        flex-direction: column; /* Stack columns vertically */
+    }
+
+    .footer__links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* Full-width for better layout */
+    }
+
+    .footer__col {
+        width: 100%; /* Full-width columns */
+        margin-bottom: 10px; /* Space between columns */
+    }
+
+    .footer__bottom {
+        text-align: left; /* Align footer bottom text */
+        margin-top: 20px;
+    }
+
+    .container {
+        padding: 20px; /* Reduce padding for small screens */
+    }
+
+    .support__link svg {
+        width: 14px;
+        height: 14px;
+        margin-top: -5px;
+    }
+   .visitor-info {
+    margin-left: auto; /* Pushes visitor info to the right */
+    font-size: 18px; /* Adjust font size for visitor info */
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: center; /* Center icon and text */
+    padding-right: 50px; /* Add some padding on the right */
+   }
+
+   .visitor-count {
+    color: #4CAF50; /* Change this to your desired color */
+    font-weight: bold; /* Optional: make the number bold */
+    margin-left: 5px; /* Add some space between the text and the number */
+   }
+   .visitor-info i {
+     color: gray;
+   }
+   .visitor-info span {
+     color: gray;
+     font-size: 15px;
+   }
+   .visitor-info span1 {
+      font-size: 15px;
+   }
+   h1 {
+      font-size: 2.5rem;
+   }
+
+   h2, h3 {
+      font-size: 2rem;
+   }
+
+   p {
+     font-size: 1.5rem;
+   }
+   .no-limit-and-support {
+       font-size: 2rem;
+    }
+}
+.site-icon {
+    width: 32px; /* Adjust the icon size */
+    height: 32px; /* Adjust the icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+</style>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img src="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" alt="API Tools" class="site-icon"> API Tools
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="mobile_menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard</a></li>
+                        <li><a href="#">
+                        <i class="fa-solid fa-link"></i>
+                        Playground</a></li>
+                        <li><a href="#">
+                        <i class="fa-solid fa-lock"></i>
+                        Privacy Policy</a></li>
+                        <li><a href="mailto:apitools.contact@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        Contact Us</a></li>
+                        </li>
+                        <li><a href="https://buymeacoffee.com/Abdizamed">
+                        <i class="fa-duotone fa-solid fa-dollar-sign"></i> 
+                        Support Me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<space>
+<!--Space Between The Nav-Bar And the Container H1-->
+</space>
+<div class="container">
+<h1>Last Updated: October 19, 2024</h1>
+<p>Welcome to API Tools. Your privacy is our top priority, and we are committed to ensuring your data remains secure and anonymous. We do not collect, store, or track any personal information. No cookies, no trackers—just free unlimited APIs designed with your privacy in mind.</p>
+
+<h2>Zero Data Collection</h2>
+<p>At API Tools, we do not gather any personal data. You are not required to create an account or provide any identifying information. Your experience is entirely anonymous, and your privacy is fully protected.</p>
+
+<h2>No Cookies, No Tracking</h2>
+<p>We have designed our platform with simplicity and transparency at its core. We do not use cookies or tracking technologies, ensuring that your browsing experience is free from targeted ads and invasive data collection.</p>
+
+<h2>Your Privacy, Our Commitment</h2>
+<p>Our API services are designed to provide a seamless experience without compromising your privacy. Feel confident knowing that none of your data will be collected, shared, or tracked while using API Tools.</p>
+<h2>Support</h2>
+<p>If you have any questions or need assistance, please reach out to our support team via <a class="support__link" href="https://t.me/ABDIZAMED_MOHAMED" target="_blank">Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+    <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+</svg></a> We're here to help.</p>
+
+</div>
+</body>
+<footer class="footer footer--dark">
+    <div class="container">
+        <div class="footer__content">
+            <div class="footer__links">
+                <div class="footer__col">
+                    <h4 class="footer__title">API Tools</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                        <i class="fa-solid fa-house"></i>
+                        <a class="footer__link" href="/">Dashboard</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-link"></i>
+                        <a class="footer__link" href="playground.html">Playground</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-lock"></i>
+                        <a class="footer__link" href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Community</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://t.me/apitoolz" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-telegram"></i> Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">More</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-github"></i> GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://buymeacoffee.com/Abdizamed" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-duotone fa-solid fa-dollar-sign"></i> Support Me</a>
+                        </li>
+                        <li class="footer__item"><li>
+                            <a class="footer__link" href="mailto:apitools.contact@gmail.com" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-envelope"></i> Contact Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__text">© 2024 API Tools | All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    $(document).ready(function () {
+        // When the menu is toggled
+        $('.navbar-toggle').click(function () {
+            $('#mobile_menu').collapse('toggle');
+        });
+
+        // Hide the menu when clicking or holding anywhere outside of it
+        $(document).on('mousedown touchstart', function (e) {
+            var target = $(e.target);
+            if (!target.closest('.navbar').length && $('#mobile_menu').hasClass('in')) {
+                $('#mobile_menu').collapse('hide');
+            }
+        });
+
+        // Close the menu when a link is clicked, except for "API Endpoints"
+        $('#mobile_menu a').click(function () {
+            var isDropdownToggle = $(this).hasClass('dropdown-toggle') || $(this).parents('.dropdown-menu').length > 0;
+            if (!isDropdownToggle) {
+                $('#mobile_menu').collapse('hide');
+            }
+        });
+
+        // Handle the dropdown explicitly
+        $('.dropdown-toggle').click(function(e) {
+            e.stopPropagation(); // Prevent collapse when clicking dropdown toggle
+            var parent = $(this).closest('li');
+            if (!parent.hasClass('open')) {
+                parent.addClass('open'); // Open dropdown
+            } else {
+                parent.removeClass('open'); // Close dropdown
+            }
+        });
+
+        // Close the entire menu when a dropdown item is clicked
+        $('.dropdown-menu a').click(function () {
+            $('#mobile_menu').collapse('hide'); // Close the entire mobile menu
+        });
+    });
+
+    // Show/hide the go-up button based on scroll position
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 10) {
+            $('#goUp').fadeIn();
+        } else {
+            $('#goUp').fadeOut();
+        }
+    });
+
+    // Scroll to top on button click
+    $('#goUp').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 100);
+        return false;
+    });
+</script>
+</html>

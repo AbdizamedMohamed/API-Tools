@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png"> <!-- Open Graph Image -->
+    <meta property="og:description" content="Your go-to hub for all Ai Tools—access everything in one place!" />
+    <meta property="og:url" content="https://apitools.pages.dev/">
+    <link rel="icon" href="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <title>API Tools </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --header-gradient-start: #4A90E2; /* Bright Blue */
+    --header-gradient-end: #9013FE; /* Vivid Purple */
+    --dark-bg: #242526; /* Dark Gray for the header */
+    --light-bg: #f4f4f4; /* Light background for contrast */
+    --text-color: #fff; /* White text color */
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #18191c; /* Darker background for better contrast */
+    color: #e4e4e4; /* Light gray text for contrast */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}
+.container {
+    flex-grow: 1;
+    flex: 1; 
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    background-color: inherit; /* Matches body background color */
+    border-radius: 12px;
+    transition: background-color 0.3s;
+    opacity: 0; 
+    animation: fadeIn 0.5s forwards;
+}
+.visitors-info API {
+    display: block; /* Ensure the element behaves like a block */
+    font-size: 3.5rem; /* Increased font size for the main heading */
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto; /* Centers the element horizontally */
+    background: linear-gradient(90deg, #6e1eff, #9013FE); /* Gradient transition */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* Style for the description (paragraph) */
+.visitors-info p {
+    font-size: 1rem; /* Adjust font size for the description */
+    color: #ffffff; /* White text color */
+    margin-top: 10px; /* Adds space between the heading and the description */
+    text-align: center; /* Centers the description text */
+    max-width: 600px; /* Optional: restricts the width of the paragraph */
+    margin: 10px auto; /* Centers and adds spacing */
+}
+
+h1, h2, h3 {
+    color: #00A67E; /* Accent color */
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 4.5rem;
+    border-bottom: 2px solid #00A67E; /* Accent border */
+    padding-bottom: 10px;
+}
+
+h2, h3 {
+    font-size: 3.5rem;
+}
+
+p {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #d1d1d1; /* Lighter gray for better readability */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.support__link {
+    color: #00BFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline; /* Ensure only the link text is clickable */
+}
+
+.support__link:hover {
+    color: #1e90ff; /* Change to your desired hover color */
+}
+.support__link svg {
+    width: 20px; /* Set a preferred width */
+    height: 20px; /* Set a preferred height */
+    vertical-align: middle; /* Align the icon with the text */
+    margin-top: -8px;
+}
+/* Ensures the footer stays at the bottom of the page */
+body, html {
+    height: 100%; /* Ensure the body and HTML take full height */
+}
+
+.wrapper { 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Your existing footer styles */
+footer {
+    padding: 20px 0;
+    background-color: #1f2937;
+    margin: 0;
+    border-radius: 0 0 5px 5px;
+    width: 100%; /* Ensures the footer spans the entire width */
+    bottom: 0; /* Position it at the bottom of the viewport */
+}
+
+.footer__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer__col {
+    flex: 1;
+    min-width: 150px;
+    margin: 10px;
+}
+
+.footer__title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.footer__items {
+    list-style: none;
+    padding: 0;
+}
+
+.footer__item {
+    margin-bottom: 10px;
+}
+
+.footer__link {
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.footer__link:hover {
+    color: #1e90ff;
+}
+
+.footer__bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer__text {
+    font-size: 2rem;
+    margin: 0;
+}
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px); /* Slide down from above */
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        transform: translateY(0); /* End in position */
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(20px); /* Slide in from below */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* End in position */
+    }
+}
+@keyframes countUp {
+    from {
+        content: '0';
+    }
+    to {
+        content: '30';
+    }
+}
+.visitor-counter {
+    font-size: 50px; /* Larger font size for the count */
+}
+.visitor-counter::before {
+    content: '0'; /* Default starting number */
+    color: #4CAF50; /* Green color for the visitor count */
+    font-weight: bold; /* Make the number bold */
+    animation: countUp 3s linear forwards; /* Animates from 0 to 30 over 5 seconds */
+}
+.navbar-brand {
+    font-size: 40px; /* Adjust font size */
+    font-weight: bold;
+    background: linear-gradient(90deg, #7b3ffe, #1c59d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding: 28px 28px; /* Add horizontal padding for length */
+    min-width: 285px; /* Set a minimum width for the brand */
+    display: inline-block; /* Ensure it takes the padding into account */
+    width: 150px;
+    height: 70px;
+    display: flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Center align items vertically */
+}
+
+.navbar-inverse {
+    background-color: var(--dark-bg); /* Dark background for the navbar */
+    border-radius: 0 0 15px 15px; /* Rounded corners at the bottom of the navbar */
+    position: fixed; /* Fix the header to the top */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+space {
+    padding-top: 60px; /* Adjust this value based on your navbar height */
+}
+
+.no-limit-and-support {
+    text-decoration: none;
+    color: #00A67E; /* Green inspired by ChatGPT */
+    font-weight: bold;
+    font-size: 3.5rem;
+    position: relative; /* For pseudo-element animations */
+    z-index: 1; /* Above the overlay */
+    transition: color 0.3s; /* Smooth color transition */
+}
+.visitor-info {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center the items horizontally */
+    align-items: flex-start; /* Align items at the top */
+    padding: 20px 0; /* Optional padding for spacing */
+}
+
+.visitor-item {
+    text-align: center; /* Center align both number and description */
+    margin: 0 20px; /* Add some space between items */
+}
+
+.visitor-count {
+    color: #4CAF50; /* Green color for the visitor count */
+    font-size: 50px; /* Larger font size for the count */
+    font-weight: bold; /* Make the number bold */
+}
+.visitor-info span {
+     color: gray;
+     font-size: 28px;
+}
+
+.visitor-info span1 {
+     font-size: 40px;
+     color: #4CAF50;
+}
+    
+.daily-requests API {
+    background: linear-gradient(90deg, #7b3ffe, #1c59d8); /* Gradient from the image */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-size: 50px; /* Adjust font size as needed */
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.daily-requests p {
+    font-size: 25px;
+    color: #b0b0b0; /* Text color for paragraph */
+    line-height: 1.6;
+    text-align: center;
+    margin-top: -20px;
+    letter-spacing: 0.5px; /* Slightly increase spacing for a more prominent look */
+    text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.3); /* Adds subtle shadow to make it look thicker */
+}
+
+.daily-requests {
+    padding: 30px;
+    text-align: center;
+    background-color: inherit; /* Dark background color */
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 80px auto;
+}
+
+.api-section {
+    padding: 30px 10px;
+    text-align: center;
+    background-color: #1f2937;
+    color: #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0;
+    z-index: 10;
+}
+
+.content-container {
+    margin: 0;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 35px;
+    color: #ffff;
+    margin: 20px 0;
+}
+
+.section-title span {
+    background: linear-gradient(90deg, #7b3ffe, #1c59d8); /* Approximated Gradient from the image */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.section-description {
+    font-size: 25px;
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+p {
+    text-align: justify;
+}
+.button {  
+    display: block;  /* Ensures the button is a block element to center it */
+    background: linear-gradient(90deg, #7b3ffe, #1c59d8); /* Gradient colors */
+    color: #fff; /* White text */
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 15px; /* Button padding */
+    margin: 20px auto; /* Center the button horizontally */
+    border: none; /* Removes default border */
+    border-radius: 100px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    margin-top: -100px;
+    text-decoration: none; /* Remove underline from anchor */
+    width: fit-content; /* Adjust width to fit the content */
+    text-align: center; /* Centers text within the button */
+}
+
+/* No hover effect */
+.button:hover, 
+.button:focus, 
+.button:active {
+    background: linear-gradient(90deg, #7b3ffe, #1c59d8); /* Keep the same background */
+    outline: none; /* No outline on focus */
+    color: #fff; /* White text */
+    text-decoration: none; /* Remove underline from anchor */
+    box-shadow: none; /* No shadow on focus or active */
+    transform: none; /* No transform on active/hover */
+}
+.features-section {
+    padding: 40px 20px;
+    background-color: #18191c; /* Matches the dark theme */
+    text-align: center;
+    color: #e4e4e4;
+    z-index: 10;
+}
+
+.features-section h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.features-section .highlight {
+   background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+}
+
+.features-section p {
+    font-size: 25px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Spreads the items evenly */
+    gap: 30px; /* Adds spacing between each feature */
+    margin-top: 40px; /* Adds spacing above the grid */
+    padding: 0 20px; /* Adds some padding on the sides */
+}
+
+.feature-item {
+    flex: 1 1 30%; /* Makes the feature item responsive with a width around 30% */
+    min-width: 250px; /* Ensures the boxes don't shrink too much on smaller screens */
+    background-color: #242526; /* Dark background for feature boxes */
+    padding: 20px;
+    border-radius: 12px; /* Rounded corners to match the style in the image */
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Adds hover effect */
+}
+
+.icon-background {
+    background-color: #007bff; /* Blue background for the icon */
+    border-radius: 50%; /* Circular background */
+    padding: 10px; /* Space around the icon */
+    display: inline-block; /* Ensures the background only covers the icon */
+}
+
+.feature-item img {
+    width: 60px; /* Keeps the icon size */
+    height: 60px;
+    margin: 0; /* Removes bottom margin */
+    display: block; /* Ensures there's no space below the image */
+}
+
+.feature-item h3 {
+    font-size: 25px;
+    color: #7b3ffe; /* Use highlight color for the titles */
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 20px;
+    color: #e4e4e4;
+    line-height: 1.6;
+}
+
+/* Add hover effect to feature boxes */
+.feature-item:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4); /* Soft shadow */
+}
+html {
+    scroll-behavior: smooth;
+}
+.site-icon {
+    width: 32px; /* Adjust the icon size */
+    height: 32px; /* Adjust the icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container .header h1 {
+        font-size: 1.2em; /* Adjust font size */
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+
+    /* Style the Playground brand in the navbar */
+    .navbar-brand {
+        font-size: 27px; /* Adjust font size */
+        padding: 15px 15px; /* Add horizontal padding for length */
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-inverse {
+        border-radius: 5px 5px 15px 15px; /* Rounded corners at the bottom of the navbar */
+    }
+
+    space {
+        padding-top: 40px; /* Adjust this value based on your navbar height */
+    }
+
+    .footer {
+        text-align: left; /* Align footer text to the left */
+    }
+
+    .footer__text {
+        font-size: 1.4rem; /* Smaller text size for footer */
+        text-align: center; /* Centered text */
+    }
+
+    .footer__title {
+        font-size: 1.9rem; /* Smaller title size */
+        background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        text-align: left;
+    }
+
+    .footer__link {
+        font-size: 1.3rem; /* Consistent font size for links */
+        margin-bottom: 8px; /* Space between links */
+        display: inline; /* Ensure only the link text is clickable */
+        text-align: left;
+    }
+
+    .footer__link:hover {
+        color: #1e90ff; /* Keep hover effect consistent */
+    }
+
+    .footer__content {
+        align-items: flex-start; /* Align items left */
+        flex-direction: column; /* Stack columns vertically */
+    }
+
+    .footer__links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* Full-width for better layout */
+    }
+
+    .footer__col {
+        width: 100%; /* Full-width columns */
+        margin-bottom: 10px; /* Space between columns */
+    }
+
+    .footer__bottom {
+        text-align: left; /* Align footer bottom text */
+        margin-top: 20px;
+    }
+
+    .container {
+        padding: 20px; /* Reduce padding for small screens */
+    }
+
+    .support__link svg {
+        width: 14px;
+        height: 14px;
+        margin-top: -5px;
+    }
+
+    .visitor-info {
+        margin-left: auto; /* Pushes visitor info to the right */
+        font-size: 18px; /* Adjust font size for visitor info */
+        display: flex; /* Use flex for icon and text alignment */
+        align-items: center; /* Center icon and text */
+        padding-right: 10px; /* Add some padding on the right */
+    }
+
+    .visitor-count {
+        color: #4CAF50; /* Change this to your desired color */
+        font-weight: bold; /* Optional: make the number bold */
+        margin-left: 5px; /* Add some space between the text and the number */
+    }
+    .visitor-counter {
+       font-size: 15px; /* Larger font size for the count */
+    }
+    .visitor-info i {
+        color: gray;
+    }
+
+    .visitor-info span {
+        color: gray;
+        font-size: 15px;
+    }
+
+    .visitor-info span1 {
+        font-size: 30px;
+        color: #4CAF50;
+    }
+    
+    .visitor-item {
+       margin: 0 15px; /* Add some space between items */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2, h3 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        text-align: justify;
+    }
+
+    .no-limit-and-support {
+        font-size: 2rem;
+    }
+
+    .api-section {
+        border-radius: 10px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .section-description {
+        font-size: 13px;
+    }
+
+    .daily-requests API {
+        font-size: 35px; /* Adjust font size as needed */
+    }
+
+    .daily-requests p {
+        font-size: 13px;
+    }
+
+    .content-container {
+        margin: 0;
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .section-description {
+        font-size: 15px;
+    }
+
+    .button {  
+        font-size: 15px;
+        margin-top: -100px;
+        border-radius: 50px;
+        padding: 5px 10px; /* Button padding */
+        
+    }
+
+    .features-section h2 {
+        font-size: 25px;
+    }
+
+    .features-section p {
+        font-size: 15px;
+    }
+
+    .feature-item img {
+        width: 40px; /* Keeps the icon size */
+        height: 40px;
+    }
+
+    .feature-item h3 {
+        font-size: 20px;
+    }
+
+    .feature-item p {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+<body>
+<ul class="background">
+    <!-- For stars -->
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+    <li class="star"></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img src="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" alt="API Tools" class="site-icon"> API Tools
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="mobile_menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard</a></li>
+                        <li><a href="playground.html">
+                        <i class="fa-solid fa-link"></i>
+                        Playground</a></li>
+                        <li><a href="privacy.html">
+                        <i class="fa-solid fa-lock"></i>
+                        Privacy Policy</a></li>
+                        <li><a href="mailto:apitools.contact@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        Contact Us</a></li>
+                        </li>
+                        <li><a href="https://buymeacoffee.com/Abdizamed">
+                        <i class="fa-duotone fa-solid fa-dollar-sign"></i> 
+                        Support Me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<space>
+<!--Space Between The Nav-Bar And the Container H1-->
+</space>
+<div class="wrapper">
+<div class="container">
+   <div class="daily-requests">
+      <API>Get Unlimited Free API</API>
+      <p>API Tools is a service that provides various kinds of APIs for free, you don't need to register, provide CC or other personal data.</p>
+   </div>
+     <a class="button" id="f1">Playground</a>
+<div class="visitor-info">
+    <div class="visitor-item">
+        <span1 class="visitor-count" id="f3">?</span1>
+        <div class="visitor-description">
+            <span>Total Requests!</span>
+        </div>
+    </div>
+    <div class="visitor-item">
+        <span1 class="visitor-count" id="f2">?</span1>
+        <div class="visitor-description">
+            <span>Daily Requests!</span>
+        </div>
+    </div>
+    <div class="visitor-item">
+        <span1 class="visitor-counter"></span1>
+        <div class="visitor-description">
+            <span>API Endpoints!</span>
+    </div>
+    </div>
+</div>
+</div>
+<div class="api-section">
+    <div class="content-container">
+        <h2 class="section-title">What is an <span>API</span>?</h2>
+        <p class="section-description">
+            APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols.
+        </p>
+
+        <h2 class="section-title">How do <span>APIs work</span> ?</h2>
+        <p class="section-description">
+            API architecture is usually explained in terms of client and server. The application sending the request is called the client, and the application sending the response is called the server.
+        </p>
+
+        <h2 class="section-title">Why we need <span>API</span> for our application?</h2>
+        <p class="section-description">
+            APIs are essential for modern applications as they enable different systems, services, and applications to communicate with each other seamlessly. They provide a standardized way for applications to request and receive data, services, or functionality from other applications, systems, or services.
+        </p>
+    </div>
+</div><div class="features-section">
+    <h2>Amazing <span class="highlight">Services & Features</span> for you</h2>
+    <p>If you want to get unlimited free API services, you are in the right place. We provide extraordinary Services and Features!</p>
+    <p>We provide various API needs such as downloaders, AI, AIO Tools, Internet Search, Weebs or Anime content API, bot development, and much more.</p>
+    
+    <div class="features-grid">
+        <div class="feature-item">
+          <div class="icon-background">
+            <img src="assets/app-maintenance-icon.png" alt="App Maintenance">
+          </div>
+            <h3><span class="highlight">App Maintenance<span></h3>
+            <p>Our team always keeps the website stable and usable. No need to worry about downtime.</p>
+        </div>
+        <div class="feature-item">
+         <div class="icon-background">
+            <img src="assets/fast-api-icon.png" alt="Blazing Fast API">
+            </div>
+            <h3><span class="highlight">Blazing Fast API</span></h3>
+            <p>We host websites with a super fast data center, so that users remain comfortable.</p>
+        </div>
+        <div class="feature-item">
+           <div class="icon-background">
+            <img src="assets/async-js-icon.png" alt="Async JavaScript">
+            </div>
+            <h3><span class="highlight">Async JavaScript</span></h3>
+            <p>We use JSHT (JavaScript High Tech) so it allows us to do multitasking quickly without lag.</p>
+        </div>
+    </div>
+</div>
+</body>
+<footer class="footer footer--dark">
+    <div class="container">
+        <div class="footer__content">
+            <div class="footer__links">
+                <div class="footer__col">
+                    <h4 class="footer__title">API Tools</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                        <i class="fa-solid fa-house"></i>
+                        <a class="footer__link" href="/">Dashboard</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-link"></i>
+                        <a class="footer__link" href="playground.html">Playground</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-lock"></i>
+                        <a class="footer__link" href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Community</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://t.me/apitoolz" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-telegram"></i> Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">More</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-github"></i> GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://buymeacoffee.com/Abdizamed" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-duotone fa-solid fa-dollar-sign"></i> Support Me</a>
+                        </li>
+                        <li class="footer__item"><li>
+                            <a class="footer__link" href="mailto:apitools.contact@gmail.com" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-envelope"></i> Contact Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__text">© 2024 API Tools | All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+$(document).ready(function () {
+    $('.navbar-toggle').click(function () {
+        $('#mobile_menu').collapse('toggle');
+    });
+
+    $(document).on('mousedown touchstart', function (e) {
+        var t = $(e.target);
+        if (!t.closest('.navbar').length && $('#mobile_menu').hasClass('in')) {
+            $('#mobile_menu').collapse('hide');
+        }
+    });
+
+    $('#mobile_menu a').click(function () {
+        var d = $(this).hasClass('dropdown-toggle') || $(this).parents('.dropdown-menu').length > 0;
+        if (!d) {
+            $('#mobile_menu').collapse('hide');
+        }
+    });
+
+    $('.dropdown-toggle').click(function (e) {
+        e.stopPropagation();
+        var p = $(this).closest('li');
+        if (!p.hasClass('open')) {
+            p.addClass('open');
+        } else {
+            p.removeClass('open');
+        }
+    });
+
+    $('.dropdown-menu a').click(function () {
+        $('#mobile_menu').collapse('hide');
+    });
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 10) {
+        $('#goUp').fadeIn();
+    } else {
+        $('#goUp').fadeOut();
+    }
+});
+
+$('#goUp').click(function () {
+    $('html, body').animate({ scrollTop: 0 }, 100);
+    return false;
+});
+</script>
+<script src="js/script.js"></script>
+</html>

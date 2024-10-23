@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Tools | Playground</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png"> <!-- Open Graph Image -->
+    <meta property="og:description" content="Your go-to hub for all API Tools—access everything in one place!" />
+    <meta property="og:url" content="https://apitools.pages.dev/playground">
+<link rel="icon" href="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" type="image/x-icon"> <!-- Favicon -->
+<style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --header-gradient-start: #4A90E2; /* Bright Blue */
+    --header-gradient-end: #9013FE; /* Vivid Purple */
+    --dark-bg: #242526; /* Dark Gray for the header */
+    --light-bg: #f4f4f4; /* Light background for contrast */
+    --text-color: #fff; /* White text color */
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #18191c; /* Darker background for better contrast */
+    color: #e4e4e4; /* Light gray text for contrast */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}
+.container {
+    flex-grow: 1;
+    position: relative; /* Add this to fix the absolute positioning issue */
+    width: 100%; /* Full width */
+    max-width: none; /* Remove any width restriction */
+    margin: 0; /* Remove margins to ensure full width */
+    padding: 30px; /* Keep padding inside the container */
+    background-color: #2f2f2f; /* Slightly lighter dark gray */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+    transition: background-color 0.3s; /* Smooth transition for theme changes */
+    opacity: 0; /* Initially hidden for fade-in effect */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+    border-bottom: 1px solid #3b3b3b; /* Thin dark gray line at the bottom */
+}
+.container .header h1 {
+    font-size: 2.5em; /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    color: #00A67E; /* Text color */
+    margin-bottom: 5px; /* Space below the heading */
+    text-transform: uppercase; /* Uppercase letters */
+    letter-spacing: 1px; /* Space between letters */
+    animation: fadeIn 1s; /* Fade-in animation */
+}
+
+h1, h2, h3 {
+    color: #00A67E; /* Accent color */
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid #00A67E; /* Accent border */
+    padding-bottom: 10px;
+}
+
+h2, h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #d1d1d1; /* Lighter gray for better readability */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.api-list {
+    margin: 20px 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.api-list li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #3b3b3b; /* Darker background for list items */
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative; /* For pseudo-element animations */
+    overflow: hidden; /* Prevents overflow for pseudo-elements */
+    opacity: 0; /* Initially hidden for scroll effect */
+    transform: translateY(20px); /* Initial position for animation */
+    animation: fadeInUp 0.5s forwards; /* Fade-in from below */
+    animation-delay: calc(0.2s * var(--i)); /* Staggered effect */
+}
+
+.api-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 166, 126, 0.2); /* Light green overlay */
+    opacity: 0;
+    transition: opacity 0.3s; /* Fade-in effect for the overlay */
+    z-index: 0; /* Behind the text */
+}
+
+.api-list li:hover:before {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.api-list li:hover {
+    background-color: #4a4d56; /* Light hover effect */
+    transform: scale(1.02); /* Slight scale effect on hover */
+}
+
+.api-list li a {
+    text-decoration: none;
+    color: #00A67E; /* Green inspired by ChatGPT */
+    font-weight: bold;
+    font-size: 0.9rem;
+    position: relative; /* For pseudo-element animations */
+    z-index: 1; /* Above the overlay */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.api-list li .api-name {
+    text-decoration: none;
+    color: #00A67E; /* Green inspired by ChatGPT */
+    font-weight: bold;
+    font-size: 2.5rem;
+    position: relative; /* For pseudo-element animations */
+    z-index: 1; /* Above the overlay */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.api-list li a:hover {
+    color: #00BFFF;
+}
+
+.api-list p {
+    font-size: 2.5rem; /* Slightly bigger font for the paragraph */
+    color: #d1d1d1; /* Light gray for paragraph text */
+    margin-top: 5px; /* Space above paragraph */
+    margin-bottom: 0; /* No bottom margin */
+}
+
+.api-description {
+    font-size: 2.3rem; /* Smaller font size */
+    color: #d1d1d1; /* Light gray for readability */
+    margin-left: 10px; /* Space between title and description */
+}
+.api-list li .visit-link {
+    font-size: 2rem; /* Adjust font size */
+    text-decoration: none; /* Remove underline */
+    color: #00A67E; /* Set link color to match theme */
+    font-weight: bold; /* Make link text bold */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.api-list li .visit-link:hover {
+    color: #1e90ff; /* Change color on hover */
+    transform: scale(1.05); /* Slightly enlarge link on hover */
+}
+.api-list li .visit-link svg {
+   width: 20px;
+   height: 20px;
+}
+
+.support__link {
+    color: #00BFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline; /* Ensure only the link text is clickable */
+}
+
+.support__link:hover {
+    color: #1e90ff; /* Change to your desired hover color */
+}
+.support__link svg {
+    width: 20px; /* Set a preferred width */
+    height: 20px; /* Set a preferred height */
+    vertical-align: middle; /* Align the icon with the text */
+    margin-top: -8px;
+}
+/* Footer Styles */
+footer {
+    padding: 20px 0; /* Optional padding for footer */
+    background-color: #18191c; /* Match your footer background */
+    margin: 0; /* Ensures no gap between footer and container */
+    border-radius: 0 0 12px 12px; /* Rounded corners at the bottom */
+}
+
+.footer__content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: space-between; /* Space out items evenly */
+    align-items: flex-start; /* Align items to the start */
+    width: 100%; /* Full width for content */
+}
+
+.footer__links {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: space-between; /* Space out links evenly */
+    width: 100%; /* Full width for links */
+}
+
+.footer__col {
+    flex: 1; /* Flexibly grow to fill space */
+    min-width: 150px; /* Minimum width for columns */
+    margin: 10px; /* Margin for spacing */
+}
+
+.footer__title {
+    font-size: 2.5rem; /* Title size */
+    margin-bottom: 10px; /* Spacing below the title */
+    font-weight: bold; /* Bold title */
+    background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end)); /* Gradient title */
+    -webkit-background-clip: text; /* Clip the background for text */
+    -webkit-text-fill-color: transparent; /* Fill color for text */
+    background-clip: text; /* Background clip */
+    text-fill-color: transparent; /* Text fill */
+}
+
+.footer__items {
+    list-style: none; /* Remove list styles */
+    padding: 0; /* No padding */
+}
+
+.footer__item {
+    margin-bottom: 10px; /* Space between items */
+}
+
+.footer__link {
+    color: #ffffff; /* White link color */
+    font-size: 1.5rem; /* Consistent font size for links */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+    display: inline-block; /* Make the link display inline-block */
+    padding: 5px 0; /* Padding for clickable area */
+}
+
+.footer__link:hover {
+    color: #1e90ff; /* Change to desired hover color */
+}
+
+.footer__bottom {
+    text-align: center; /* Centered text for the bottom */
+    margin-top: 20px; /* Margin above bottom text */
+}
+
+.footer__text {
+    font-size: 2rem; /* Smaller text size for footer */
+    margin: 0; /* No margin */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px); /* Slide down from above */
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        transform: translateY(0); /* End in position */
+        opacity: 1; /* End fully opaque */
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(20px); /* Slide in from below */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* End in position */
+    }
+}
+APIheader {
+    display: block; /* Ensure it behaves like a block element */
+    font-size: 30px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: #00BCD4; /* Set the cyan color */
+    margin: 20px 0; /* Space above and below the header */
+    text-align: left; /* Center the text */
+    border-bottom: 2px solid #ccc; /* Add a bottom border */
+    padding-bottom: 10px; /* Space between the text and the border */
+}
+.navbar-brand {
+    font-size: 40px; /* Adjust font size */
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end)); /* Gradient background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding: 28px 28px; /* Add horizontal padding for length */
+    min-width: 285px; /* Set a minimum width for the brand */
+    display: inline-block; /* Ensure it takes the padding into account */
+    width: 150px;
+    height: 70px;
+    display: flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Center align items vertically */
+}
+
+.navbar-inverse {
+    background-color: var(--dark-bg); /* Dark background for the navbar */
+    border-radius: 0 0 15px 15px; /* Rounded corners at the bottom of the navbar */
+    position: fixed; /* Fix the header to the top */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+/* Add padding to sections to prevent overlap */
+section {
+    padding-top: 70px; /* Adjust this value based on your navbar height */
+}
+space {
+    padding-top: 60px; /* Adjust this value based on your navbar height */
+}
+
+.no-limit-and-support {
+    text-decoration: none;
+    color: #00A67E; /* Green inspired by ChatGPT */
+    font-weight: bold;
+    font-size: 3.5rem;
+    position: relative; /* For pseudo-element animations */
+    z-index: 1; /* Above the overlay */
+    transition: color 0.3s; /* Smooth color transition */
+}
+/* Style for the back to top button */
+.go-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* Hidden by default */
+    background-color: var(--dark-bg);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+.visitor-info {
+    margin-left: 20px; /* Pushes visitor info to the right */
+    font-size: 18px; /* Adjust font size for visitor info */
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: center; /* Center icon and text */
+    padding-right: 10px; /* Add some padding on the right */
+}
+
+.visitor-count {
+    color: #4CAF50; /* Color for the visitor count */
+    font-weight: bold; /* Make the number bold */
+    margin-left: 2px; /* Add some space between the text and the number */
+}
+
+/* New rule for span text color */
+.visitor-info span {
+    color: black; /* Set the color of text in spans to black */
+    font-size: 18px; /* Adjust font size for visitor info */
+}
+.visitor-info i {
+    color: green; /* Set the color of text in spans to black */
+}
+/* API Title Styles */
+.api-title {
+    font-size: 7rem; /* Font size for API title */
+    font-weight: bold; /* Font weight */
+    color: #ffff; /* White color */
+    margin: 0; /* Remove bottom margin */
+    border-bottom: 5px solid #3b3b3b; /* Add underline with specified color and thickness */
+    padding-bottom: 10px; /* Add some space between the title and underline */
+}
+
+/* Version number styles */
+.version-number,
+.oas {
+    background-color: #8c8c8c; /* Gray background for version number */
+    color: white; /* Text color */
+    padding: 1px 5px; /* Padding for spacing */
+    border-radius: 12px; /* Rounded corners */
+    font-size: 2.5rem; /* Increased font size for version numbers */
+    font-weight: bold; /* Bold text */
+    margin-top: -5px; /* Adjust this value to raise the version numbers */
+}
+
+/* OAS style */
+.oas {
+    background-color: #9fdc70; /* Brighter green */
+}
+.free-api {
+   font-size: 2.5rem; /* Increased font size for version numbers */
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container .header h1 {
+       font-size: 1.2em; /* Adjust font size */
+    }
+    p {
+       font-size: 1.3rem;
+    }
+    APIheader {
+        font-size: 18px; /* Adjust font size as needed */
+    }
+    .api-list li .api-name {
+       font-size: 1.3rem; /* Adjust as needed */
+    }
+
+    .api-list li .visit-link {
+       font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .api-list li .visit-link svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    /* Style the Playground brand in the navbar */
+    .navbar-brand {
+       font-size: 27px; /* Adjust font size */
+       padding: 15px 15px; /* Add horizontal padding for length */
+       width: 50px;
+       height: 50px;
+    }
+
+    .navbar-inverse {
+       border-radius: 5px 5px 15px 15px; /* Rounded corners at the bottom of the navbar */
+    }
+
+    .api-list p {
+       font-size: 1.3rem; /* Slightly bigger font for the paragraph */
+    }
+
+    .no-limit-and-support {
+        font-size: 1.7rem;
+    }
+
+    .api-list li .visit-link svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .api-list li .visit-link {
+       font-size: 1.1rem; /* Adjust font size */
+    }
+
+    /* Add padding to sections to prevent overlap */
+    section {
+       padding-top: 40px; /* Adjust this value based on your navbar height */
+    }
+    space {
+       padding-top: 40px; /* Adjust this value based on your navbar height */
+    }
+    .footer {
+        text-align: left; /* Align footer text to the left */
+    }
+   .footer__text {
+       font-size: 1.4rem; /* Smaller text size for footer */
+       text-align: center; /* Centered text */
+   }
+   .footer__title {
+        font-size: 1.9rem; /* Smaller title size */
+        background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        text-align: left;
+    }
+
+    .footer__link {
+        font-size: 1.3rem; /* Consistent font size for links */
+        margin-bottom: 8px; /* Space between links */
+        display: inline; /* Ensure only the link text is clickable */
+        text-align: left;
+    }
+
+    .footer__link:hover {
+        color: #1e90ff; /* Keep hover effect consistent */
+    }
+
+    .footer__content {
+        align-items: flex-start; /* Align items left */
+        flex-direction: column; /* Stack columns vertically */
+    }
+
+    .footer__links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* Full-width for better layout */
+    }
+
+    .footer__col {
+        width: 100%; /* Full-width columns */
+        margin-bottom: 10px; /* Space between columns */
+    }
+
+    .footer__bottom {
+        text-align: left; /* Align footer bottom text */
+        margin-top: 20px;
+    }
+
+    .container {
+        padding: 20px; /* Reduce padding for small screens */
+    }
+
+    .support__link svg {
+        width: 14px;
+        height: 14px;
+        margin-top: -5px;
+    }
+   .visitor-info {
+    margin-left: auto; /* Pushes visitor info to the right */
+    font-size: 18px; /* Adjust font size for visitor info */
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: center; /* Center icon and text */
+    padding-right: 50px; /* Add some padding on the right */
+   }
+
+   .visitor-count {
+    color: #4CAF50; /* Change this to your desired color */
+    font-weight: bold; /* Optional: make the number bold */
+    margin-left: 5px; /* Add some space between the text and the number */
+   }
+   .visitor-info i {
+     color: gray;
+   }
+   .visitor-info span {
+     color: gray;
+     font-size: 15px;
+   }
+   .visitor-info span1 {
+      font-size: 15px;
+   }
+   /* API Title Styles */
+   .container .api-title {
+       font-size: 3rem;
+       font-weight: bold;
+       color: #ffff;
+       border-bottom: 3px solid #3b3b3b; /* Add underline with specified color and thickness */
+   }
+   /* Version Info Styles */
+   .container .page-title .oas, .version-number {
+       gap: 10px; /* Keep some gap between the version numbers */
+       font-size: 1.1rem;
+   }
+   .free-api {
+      font-size: 1.2rem; /* Increased font size for version numbers */
+   }
+}
+.site-icon {
+    width: 32px; /* Adjust the icon size */
+    height: 32px; /* Adjust the icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+</style>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img src="https://raw.githubusercontent.com/AbdizamedMohamed/API-Tools/main/public/assets/favicon.png" alt="API Tools" class="site-icon"> API Tools
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" id="mobile_menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" role="button" data-toggle="dropdown">
+                                <i class="fa-solid fa-link"></i>
+                                API Endpoints <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#AI">
+                                <i class="fa-solid fa-brain"></i>
+                                AI</a></li>
+                                <li><a href="#downloaders">
+                                <i class="fa-solid fa-cloud-arrow-down"></i>
+                                Downloaders</a></li>
+                                <li><a href="#tools">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                Tools</a></li>
+                                <li><a href="#search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Search</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="privacy.html">
+                        <i class="fa-solid fa-lock"></i>
+                        Privacy Policy</a></li>
+                        <li><a href="mailto:apitools.contact@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        Contact Us</a></li>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" role="button" data-toggle="dropdown">
+                                <i class="fa-solid fa-chart-column"></i>
+                                Site Statistics <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                            <li>
+                               <div class="visitor-info">
+                                  <p>
+                                     <span>Daily Requests!</span>
+                                     <span1 class="visitor-count" id="f2">0</span1>
+                                  </p>
+                               </div>
+                            </li>
+                            <li>
+                               <div class="visitor-info">
+                                  <p>
+                                     <span>Total Requests!</span>
+                                     <span1 class="visitor-count" id="f3">0</span1>
+                                  </p>
+                               </div>
+                            </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<space>
+</space>
+<div class="container">
+   <div class="page-title">
+      <p>
+         <span class="api-title">API Tools Rest API </span>
+         <span class="version-number">1.2.0</span>
+         <span class="oas">OAS 2.0</span>
+      </p>
+      <p class="free-api">Free Rest API for everyone without limit.<br>
+      This project is licensed under the <a href='https://opensource.org/license/MIT' target="_blank"> MIT License<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a><br>
+      Join our community on <a href="https://t.me/apitoolz" target="_blank"> Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+      </p>
+   </div>
+<section id="AI">
+<APIheader>AI
+<i class="fa-solid fa-brain"></i>
+</APIheader>
+</section>
+<ul class="api-list">
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">ChatGPT-4 <i class="fas fa-comments"></i></p>
+            <a href="https://api.apitools.workers.dev/api/ai/chatgpt4?text=hi" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">ChatGPT-4 AI</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">ChatGPT-3 <i class="fas fa-comments"></i></p>
+            <a href="https://api.apitools.workers.dev/api/ai/chatgpt3?text=hi" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">ChatGPT-3 AI</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Gemini
+            <i class="fas fa-comments"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/ai/gemini?text=hi" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Get Responses From Gemini AI</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Gemini Pro
+            <i class="fas fa-comments"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/ai/gemini-pro?text=hi" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Get Responses From Gemini Pro AI</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Zexxa
+            <i class="fas fa-comments"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/ai/zexxa?text=hi" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Innovative Indonesian AI Model</p>
+    </li>
+    <li>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <p class="api-name">Text to Image
+        <i class="fas fa-image"></i>
+        </p>
+        <a href="https://api.apitools.workers.dev/api/ai/text2img?prompt=Luxury%20Car" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+            <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+        </svg></a>
+    </div>
+    <p class="api-description">Generate Images Using Text2Img</p>
+</li>
+
+<li>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <p class="api-name">Flux Diffusion
+        <i class="fas fa-image"></i>
+        </p>
+        <a href="https://api.apitools.workers.dev/api/ai/flux-diffusion?prompt=Luxury%20Car" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+            <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+        </svg></a>
+    </div>
+    <p class="api-description">Generate Realistic Images With Flux Diffusion.</p>
+</li>
+<li>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <p class="api-name">Text to Anime
+        <i class="fas fa-image"></i>
+        </p>
+        <a href="https://api.apitools.workers.dev/api/ai/text2anime?prompt=Luxury%20Car" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+            <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+        </svg></a>
+    </div>
+    <p class="api-description">Generate anime-images using Text-to-Anime</p>
+</li>
+</ul>
+<section id="downloaders">
+<APIheader>Downloader
+<i class="fa-solid fa-cloud-arrow-down"></i>
+</APIheader>
+</section>
+<ul class="api-list">
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">TikTok
+            <i class="fa-brands fa-tiktok"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/ttdl?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download media from TikTok without watermark</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Twitter
+            <i class="fa-brands fa-twitter"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/twitter?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download media from Twitter</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Facebook
+            <i class="fa-brands fa-facebook"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/fbdl?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download media from Facebook</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Instagram
+            <i class="fa-brands fa-instagram"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/igdl?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download media from Instagram </p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">G-Drive
+            <i class="fa-brands fa-google-drive"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/gdrive?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download file from Google Drive</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">YouTube
+            <i class="fa-brands fa-youtube"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/downloader/ytdl?url=YOUR_LINK" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Download YouTube videos</p>
+    </li>
+</ul>
+<section id="tools">
+<APIheader>Tools
+<i class="fa-solid fa-screwdriver-wrench"></i>
+</APIheader>
+</section>
+<ul class="api-list">
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Weather
+            <i class="fa-solid fa-earth-africa"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/tools/weather?city=CITY_NAME" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Get current weather conditions and forecasts.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">IP Location
+            <i class="fa-solid fa-map-marker-alt"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/tool/iplocation?ip=YOUR_IP" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Retrieve location details based on IP address.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">WHOIS
+            <i class="fa-solid fa-info-circle"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/tool/whois?domain=YOUR_DOMAIN" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Get domain registration details and ownership information.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">TinyURL
+            <i class="fa-solid fa-link"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/tool/tinyurl?url=YOUR_URL" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Shorten long URLs into manageable links.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Screenshot
+            <i class="fa-solid fa-camera"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/tool/ssweb?url=YOUR_URL" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a>
+        </div>
+        <p class="api-description">Capture screenshots of any webpage.</p>
+    </li>
+</ul>
+<section id="search">
+    <APIheader>Search
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </APIheader>
+</section>
+<ul class="api-list">
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Google Search
+            <i class="fa-brands fa-google"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/search/google?query=YOUR_QUERY" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg></a>
+        </div>
+        <p class="api-description">Perform searches using Google.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Pinterest Search
+            <i class="fa-brands fa-pinterest"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/search/pinterest?query=YOUR_QUERY" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg></a>
+        </div>
+        <p class="api-description">Search and discover Pinterest content.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">YouTube Search
+            <i class="fa-brands fa-youtube"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/search/yt?query=YOUR_QUERY" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg></a>
+        </div>
+        <p class="api-description">Search for videos on YouTube.</p>
+    </li>
+    <li>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="api-name">Google Images
+            <i class="fas fa-image"></i>
+            </p>
+            <a href="https://api.apitools.workers.dev/api/search/gimage?query=YOUR_QUERY" class="visit-link">Visit<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg></a>
+        </div>
+        <p class="api-description">Search for images using Google.</p>
+    </li>
+</ul>
+<h2 class="no-limit-and-support"> Support</h2>
+<p>If you have any inquiries or require assistance, please do not hesitate to contact the Developer via <a class="support__link" href="https://t.me/ABDIZAMED_MOHAMED" target="_blank"> Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+    </svg></a> We are here to help you.</p>
+</div>
+    <!-- Go Up Button -->
+    <button class="go-up" id="goUp" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+<footer class="footer footer--dark">
+    <div class="container">
+        <div class="footer__content">
+            <div class="footer__links">
+                <div class="footer__col">
+                    <h4 class="footer__title">API Tools</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                        <i class="fa-solid fa-house"></i>
+                        <a class="footer__link" href="/">Dashboard</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-link"></i>
+                        <a class="footer__link" href="playground.html">Playground</a></li>
+                        <li class="footer__item">
+                        <i class="fa-solid fa-lock"></i>
+                        <a class="footer__link" href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Community</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://t.me/apitoolz" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-telegram"></i> Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">More</h4>
+                    <ul class="footer__items">
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-github"></i> GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link" href="https://buymeacoffee.com/Abdizamed" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-duotone fa-solid fa-dollar-sign"></i> Support Me</a>
+                        </li>
+                        <li class="footer__item"><li>
+                            <a class="footer__link" href="mailto:apitools.contact@gmail.com" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-envelope"></i> Contact Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU" style="margin-left: 4px;">
+                                <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__text">© 2024 API Tools | All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+$(document).ready(function () {
+    $('.navbar-toggle').click(function () {
+        $('#mobile_menu').collapse('toggle');
+    });
+
+    $(document).on('mousedown touchstart', function (e) {
+        var t = $(e.target);
+        if (!t.closest('.navbar').length && $('#mobile_menu').hasClass('in')) {
+            $('#mobile_menu').collapse('hide');
+        }
+    });
+
+    $('#mobile_menu a').click(function () {
+        var d = $(this).hasClass('dropdown-toggle') || $(this).parents('.dropdown-menu').length > 0;
+        if (!d) {
+            $('#mobile_menu').collapse('hide');
+        }
+    });
+
+    $('.dropdown-toggle').click(function (e) {
+        e.stopPropagation();
+        var p = $(this).closest('li');
+        if (!p.hasClass('open')) {
+            p.addClass('open');
+        } else {
+            p.removeClass('open');
+        }
+    });
+
+    $('.dropdown-menu a').click(function () {
+        $('#mobile_menu').collapse('hide');
+    });
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 10) {
+        $('#goUp').fadeIn();
+    } else {
+        $('#goUp').fadeOut();
+    }
+});
+
+$('#goUp').click(function () {
+    $('html, body').animate({ scrollTop: 0 }, 100);
+    return false;
+});
+</script>
+<script src="js/script.js"></script>
+</html>
