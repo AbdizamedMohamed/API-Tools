@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/github/issues/AbdizamedMohamed/API-Tools" alt="open issues" />
   </a>
   <a href="https://github.com/AbdizamedMohamed/API-Tools/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/AbdizamedMohamed/API-Tools" alt="license" />
+    <img src="https://img.shields.io/github/license/AbdizamedMohamed/API-Tools.svg" alt="license" />
   </a>
 </p>
    
