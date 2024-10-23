@@ -9,19 +9,19 @@
     <img src="https://img.shields.io/github/contributors/AbdizamedMohamed/API-Tools" alt="contributors" />
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/AbdizamedMohamed/API-Tools" alt="last update" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/network/members">
-    <img src="https://img.shields.io/github/forks/Louis3797/awesome-readme-template" alt="forks" />
+  <a href="https://github.com/AbdizamedMohamed/API-Tools/network/members">
+    <img src="https://img.shields.io/github/forks/AbdizamedMohamed/API-Tools" alt="forks" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/stargazers">
-    <img src="https://img.shields.io/github/stars/Louis3797/awesome-readme-template" alt="stars" />
+  <a href="https://github.com/AbdizamedMohamed/API-Tools/stargazers">
+    <img src="https://img.shields.io/github/stars/AbdizamedMohamed/API-Tools" alt="stars" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/issues/">
-    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
+  <a href="https://github.com/AbdizamedMohamed/API-Tools/issues/">
+    <img src="https://img.shields.io/github/issues/AbdizamedMohamed/API-Tools" alt="open issues" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/Louis3797/awesome-readme-template.svg" alt="license" />
+  <a href="https://github.com/AbdizamedMohamed/API-Tools/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/AbdizamedMohamed/API-Tools" alt="license" />
   </a>
 </p>
    
