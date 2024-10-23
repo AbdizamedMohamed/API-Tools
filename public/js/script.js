@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	const T2y_q8Z$46282_828 = document.querySelector("#f3");
 	const T2y_q8Z$16282_828 = 'dailyRequests';
 	const T2y_q8Z$46272_828 = 'AllTimeRequests';
-	const T2y_q8z$46272_828 = 'user';
-	const T2y_Q8z$46272_828 = '6859577';
+	const T2y_q8z$46272_828 = 'SueH8kww0Hr';
+	const T2y_Q8z$46272_828 = '73d9h8I8yy8i';
 
 	async function T2y_Q8z$46273_828(r, c) {
 		try {
-			const T9y_w8z$42373_419 = await fetch(`https://api.count-service.workers.dev/getvalue?value=${r}&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
+			const T9y_w8z$42373_419 = await fetch(`https://api.counter-service.workers.dev/getvalue?value=${r}&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
 			if (!T9y_w8z$42373_419.ok) {
 				const err = await T9y_w8z$42373_419.json();
 				console.error(`Error fetching ${r} count:`, err.message);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	async function T3y_Q8z$46273_828(r) {
 		try {
-			const T9y_w8z$42373_419 = await fetch(`https://api.count-service.workers.dev/plus?valueName=${r}&amount=1&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
+			const T9y_w8z$42373_419 = await fetch(`https://api.counter-service.workers.dev/plus?valueName=${r}&amount=1&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
 			if (!T9y_w8z$42373_419.ok) {
 				const err = await T9y_w8z$42373_419.json();
 				console.error(`Error incrementing ${r} count:`, err.message);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	async function T3y_Q8z$46373_828(r) {
 			try {
-			const T9y_w8z$42373_419 = await fetch(`https://api.count-service.workers.dev/setvalue?valueName=${r}&newValue=0&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
+			const T9y_w8z$42373_419 = await fetch(`https://api.counter-service.workers.dev/setvalue?valueName=${r}&newValue=0&${T2y_q8z$46272_828}=${T2y_Q8z$46272_828}`);
 			if (!T9y_w8z$42373_419.ok) {
 				const err = await T9y_w8z$42373_419.json();
 				console.error(`Error:`, err.message);
