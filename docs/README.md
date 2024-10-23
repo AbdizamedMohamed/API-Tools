@@ -1,5 +1,3 @@
-Here's a professional and comprehensive README.md file template for your API Tools GitHub repository:
-
 # API Tools
 
 Welcome to **API Tools**, a powerful and free collection of APIs for developers to build and integrate into their applications. We offer a range of endpoints with no user data tracking, no cookies, and unlimited usage. This repository contains the frontend and documentation for **API Tools**, as well as guidelines for using our Cloudflare Workers-based APIs.
@@ -71,21 +69,6 @@ Here’s a list of some of the APIs you can use:
      - `x-api-key`: `your-api-key`
 
 *More APIs are available on the site, and we are constantly adding new ones.*
-
-## API Usage
-
-Here’s an example of how to use one of our APIs:
-
-### Example: Get Visitor Count (Counter API)
-```bash
-curl -X GET "https://apitools.workers.dev/api/count"
-
-Example: Increment Visitor Count
-
-curl -X POST "https://apitools.workers.dev/api/increment" \
--H "x-api-key: your-api-key"
-
-For more examples, see the full API documentation available on the API Tools website.
 
 Error Handling
 
