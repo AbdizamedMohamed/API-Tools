@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter API Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style> 
+        :root {
+            --bg-color: #18191c;
+            --text-color: #e4e4e4;
+            --header-bg: #242526;
+            --code-bg: #242526;
+            --code-color: #e4e4e4;
+            --border-color: #444;
+            --link-color: #61dafb;
+            --link-hover-color: #21a1f1;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            width: auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .theme-toggle {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--header-bg);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .code-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        code {
+            background-color: var(--code-bg);
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            color: var(--code-color);
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
+        }
+        .copy-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--link-color);
+            font-size: 1.1em;
+        }
+        p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+        .example {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            main {
+                padding: 10px;
+            }
+            h2 {
+                font-size: 1.75em;
+            }
+            h3 {
+                font-size: 1.25em;
+            }
+            code {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Counter API Documentation</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>Welcome to the Counter API documentation. This API allows you to manage counters within namespaces, offering features such as value addition, incrementation, decrementation, and more. Below, you'll find the available endpoints, methods, and their usage instructions.</p>
+        </section>
+
+        <section>
+            <h2>Base URL</h2>
+            <code>https://counter.apitools.workers.dev</code>
+            <p>Use this base URL to access the Counter API endpoints described below.</p>
+        </section>
+
+        <section>
+            <h2>Available Endpoints</h2>
+            <h3>1. Get Namespace Data</h3>
+            <p>Retrieve all values stored under a specified namespace.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/npdata?np=[NAMESPACE]&api=[API_KEY]">GET /npdata?np=[NAMESPACE]&api=[API_KEY]</a></code>
+                <button class="copy-button" onclick="copyToClipboard('GET /npdata?np=[NAMESPACE]&api=[API_KEY]')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/npdata?np=myNamespace&api=yourApiKey">GET /npdata?np=myNamespace&api=yourApiKey</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/npdata?np=myNamespace&api=yourApiKey')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <h3>2. Create Namespace</h3>
+            <p>Create a new namespace to store values. A unique namespace name must be provided.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/newnp?name=[NAMESPACE_NAME]">POST /newnp?name=[NAMESPACE_NAME]</a></code>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/newnp?name=myNamespace">POST /newnp?name=myNamespace</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/newnp?name=myNamespace')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <h3>3. Add Value to Namespace</h3>
+            <p>Add a new value to a specific namespace.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/addvalue?np=[NAMESPACE]&api=[API_KEY]&value=[VALUE]">POST /addvalue?np=[NAMESPACE]&api=[API_KEY]&value=[VALUE]</a></code>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/addvalue?np=myNamespace&api=yourApiKey&value=50">POST /addvalue?np=myNamespace&api=yourApiKey&value=testValue</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/addvalue?np=myNamespace&api=yourApiKey&value=testValue)">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <h3>4. Increment Value</h3>
+            <p>Increment the value of a specific key within a namespace.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/plus?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]">POST /plus?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]</a></code>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/plus?np=myNamespace&api=yourApiKey&key=myKey">POST /plus?np=myNamespace&api=yourApiKey&key=myKey</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/plus?np=myNamespace&api=yourApiKey&key=myKey')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <h3>5. Decrement Value</h3>
+            <p>Decrement the value of a specific key within a namespace.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/minus?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]">POST /minus?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]</a></code>
+                </button>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/minus?np=myNamespace&api=yourApiKey&key=myKey">POST /minus?np=myNamespace&api=yourApiKey&key=myKey</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/minus?np=myNamespace&api=yourApiKey&key=myKey')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <h3>6. Delete Value</h3>
+            <p>Delete a specific key and its value from a namespace.</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/delvalue?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]">DELETE /delvalue?np=[NAMESPACE]&api=[API_KEY]&key=[KEY]</a></code>
+                </button>
+            </div>
+            <p class="example">Example:</p>
+            <div class="code-container">
+                <code><a href="https://counter.apitools.workers.dev/delvalue?np=myNamespace&api=yourApiKey&key=myKey">DELETE /delvalue?np=myNamespace&api=yourApiKey&key=myKey</a></code>
+                <button class="copy-button" onclick="copyToClipboard('https://counter.apitools.workers.dev/delvalue?np=myNamespace&api=yourApiKey&key=myKey')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard: ' + text);
+        }
+    </script>
+</body>
+</html>
